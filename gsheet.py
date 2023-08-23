@@ -17,20 +17,20 @@ st.title('🌷 Predict Flower Species')
 
 # Auto-refresh every 5 seconds
 count = st_autorefresh(interval=5000)
- 
+
 # Create a function to retreive latest data from the Google Sheet
 def retrieveData():
     
     # Set up Google Sheets credentials
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('gsheetapi.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('my-project-396808-4444ef7c89ce.json', scope)
 
     # Connect to Google Sheets
     client = gspread.authorize(credentials)
 
     # Open the desired sheet
-    sheet = client.open_by_key('1gMvu7MJ4inAuaTIgynkm0cPr2QIaQNqjkmOtwPxZBL8').get_worksheet(0)
+    sheet = client.open_by_key('1f7c89ce030614e8d2e47e4abfad47f6b489').get_worksheet(0)
 
     # Fetch data from the sheet
     data = pd.DataFrame(sheet.get_all_values())
